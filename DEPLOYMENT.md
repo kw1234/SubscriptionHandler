@@ -177,7 +177,7 @@ This command:
    RUN npm run build
 
    # Expose port
-   EXPOSE 5000
+   EXPOSE 5004
 
    # Start application
    CMD ["npm", "start"]
@@ -190,7 +190,7 @@ This command:
      app:
        build: .
        ports:
-         - "5000:5000"
+         - "5004:5004"
        environment:
          - NODE_ENV=production
          - DATABASE_URL=postgresql://postgres:password@db:5432/subscription_db
@@ -235,7 +235,7 @@ Required environment variables for production:
 ```env
 DATABASE_URL=your_production_database_url
 NODE_ENV=production
-PORT=5000
+PORT=5004
 ```
 
 Optional (for real Stripe integration):

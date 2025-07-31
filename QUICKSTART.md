@@ -21,7 +21,7 @@ npm run db:seed
 npm run dev
 ```
 
-Open `http://localhost:5000` in your browser.
+Open `http://localhost:5004` in your browser.
 
 ## ✅ What's Included
 
@@ -143,7 +143,7 @@ Built with modern design system:
 ```env
 DATABASE_URL=postgresql://...
 NODE_ENV=production
-PORT=5000
+PORT=5004
 ```
 
 ## 💡 Next Steps

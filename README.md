@@ -57,7 +57,7 @@ A comprehensive subscription management system with 24-hour renewal cycles, real
    ```env
    DATABASE_URL=postgresql://username:password@localhost:5432/subscription_db
    NODE_ENV=development
-   PORT=5000
+   PORT=5004
    ```
 
 4. **Set up the database**
@@ -74,7 +74,7 @@ A comprehensive subscription management system with 24-hour renewal cycles, real
    npm run dev
    ```
 
-   The application will be available at `http://localhost:5000`
+   The application will be available at `http://localhost:5004`
 
 ## 🚀 Deployment
 
@@ -95,7 +95,7 @@ A comprehensive subscription management system with 24-hour renewal cycles, real
 ```env
 DATABASE_URL=your_production_database_url
 NODE_ENV=production
-PORT=5000
+PORT=5004
 ```
 
 ### Deploy to Cloud Platforms

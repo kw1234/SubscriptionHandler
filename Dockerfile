@@ -38,11 +38,11 @@ COPY --from=builder /app/package.json ./package.json
 USER nextjs
 
 # Expose port
-EXPOSE 5000
+EXPOSE 5004
 
 # Set environment
 ENV NODE_ENV=production
-ENV PORT=5000
+ENV PORT=5004
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \

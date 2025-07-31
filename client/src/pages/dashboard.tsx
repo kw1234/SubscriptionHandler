@@ -14,15 +14,18 @@ export default function Dashboard() {
   const [lastUpdated, setLastUpdated] = useState(new Date());
 
   // WebSocket connection for real-time updates
-  useWebSocket((data) => {
-    // Invalidate relevant queries when updates are received
-    if (data.type === 'subscription_created' || data.type === 'subscription_updated') {
-      queryClient.invalidateQueries({ queryKey: ['/api/dashboard/metrics'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/subscriptions'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/activity-logs'] });
-      setLastUpdated(new Date());
-    }
-  });
+  // useWebSocket((data) => {
+  //   // Invalidate relevant queries when updates are received
+  //   if (
+  //     data.type === "subscription_created" ||
+  //     data.type === "subscription_updated"
+  //   ) {
+  //     queryClient.invalidateQueries({ queryKey: ["/api/dashboard/metrics"] });
+  //     queryClient.invalidateQueries({ queryKey: ["/api/subscriptions"] });
+  //     queryClient.invalidateQueries({ queryKey: ["/api/activity-logs"] });
+  //     setLastUpdated(new Date());
+  //   }
+  // });
 
   const handleRefresh = () => {
     queryClient.invalidateQueries();
@@ -31,24 +34,31 @@ export default function Dashboard() {
 
   const formatLastUpdated = (date: Date) => {
     const now = new Date();
-    const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
-    
-    if (diffInMinutes === 0) return 'just now';
-    if (diffInMinutes === 1) return '1 minute ago';
+    const diffInMinutes = Math.floor(
+      (now.getTime() - date.getTime()) / (1000 * 60),
+    );
+
+    if (diffInMinutes === 0) return "just now";
+    if (diffInMinutes === 1) return "1 minute ago";
     return `${diffInMinutes} minutes ago`;
   };
 
   return (
     <div className="flex h-screen bg-material-surface">
-      <Sidebar />
-      
+      {/* TODO: Uncomment sidebar when the functionality is needed */}
+      {/* <Sidebar /> */}
+
       <div className="flex-1 overflow-auto">
         {/* Header */}
         <div className="bg-white shadow-sm border-b border-gray-200 px-8 py-4">
           <div className="flex justify-between items-center">
             <div>
-              <h2 className="text-2xl font-medium text-material-gray">Subscription Dashboard</h2>
-              <p className="text-gray-500 mt-1">Monitor and manage user subscriptions</p>
+              <h2 className="text-2xl font-medium text-material-gray">
+                Subscription Dashboard
+              </h2>
+              <p className="text-gray-500 mt-1">
+                Monitor and manage user subscriptions
+              </p>
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-500">
@@ -67,7 +77,7 @@ export default function Dashboard() {
 
         <div className="p-8">
           <MetricsCards />
-          
+
           <div className="mb-8">
             <SubscriptionTable />
           </div>
